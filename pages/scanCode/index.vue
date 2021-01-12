@@ -73,9 +73,8 @@ export default {
 	  //获取商品信息
 	  getGoodsInfo(code) {
 		  scanCodeApi.getGoodsDetail({code}).then((info)=>{
-		   info=JSON.parse(info);
-		   if(info.data.barcodes.length){
-			   this.goodsInfo=info.data.barcodes;
+		   if(info.barcodes.length){
+			   this.goodsInfo=info.barcodes;
 		   }else{
 			   // uni.showToast({
 					 // icon:'none',
@@ -93,6 +92,7 @@ export default {
 			   });
 		   }
 		   }).catch((err)=>{
+			   console.log(err)
 			   uni.showToast({
 				         icon:'none',
 						 title:'信息获取失败'
